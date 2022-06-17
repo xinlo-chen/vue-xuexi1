@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Axios应用程序</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <p>名称：{{info.name}}</p>
+      <div>url：<a v-bind:href="info.url" target="_black">{{info.url}}</a></div>
+    </div>
+
+    <script>
+      var app = new Vue({
+        el: '#app',
+        data() {
+          return {
+            info: {
+              name: '',
+              url: '',
+            },
+          }
+        },
+        mounted() {
+          const a = axios
+            .get('data.json')
+            .then((response) => (this.info = response.data))
+        },
+      })
+    </script>
+  </body>
+</html>
